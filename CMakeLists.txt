@@ -6,6 +6,9 @@ if ( MSVC )
 
   set( PLATFORM "windows-x64" )
 
+  add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
+  add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
+
 else( )
 
   set( PLATFORM "liux-x64" )
