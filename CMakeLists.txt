@@ -36,7 +36,7 @@ else( )
   
 endif( )
 
-set( ZLIB_ROOT ${CMAKE_BINARY_DIR}/packages/zlib.1.2.11-1-${PLATFORM} )
+set( ZLIB_ROOT ${CMAKE_BINARY_DIR}/packages/zlib.1.2.11-2-${PLATFORM} )
 
 find_package( ZLIB REQUIRED )
 
