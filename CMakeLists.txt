@@ -2,6 +2,16 @@ cmake_minimum_required( VERSION 3.15 )
 
 project( HelloWorld )
 
+if ( MSVC )
+
+  set( PLATFORM "windows-x64" )
+
+else( )
+
+  set( PLATFORM "liux-x64" )
+
+endif( )
+
 # Find Nuget
 find_program( NUGET nuget )
 if ( NOT NUGET )
@@ -11,17 +21,17 @@ if ( NOT NUGET )
 else( )
 
   # Copy the Nuget config file from source location to the CMake build directory.
-  configure_file( packages.config.in packages.config COPYONLY )
+  configure_file( packages.config.in packages.config )
 
   # Run Nuget using the .config file to install any missing depednencies to the build directory
   execute_process( COMMAND
-                   ${NUGET} restore packages.config -SolutionDirectory ${CMAKE_BINARY_DIR}
+	           ${NUGET} restore packages.config -Noninteractive -SolutionDirectory ${CMAKE_BINARY_DIR}
                    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
                  )
   
 endif( )
 
-set( ZLIB_ROOT ${CMAKE_BINARY_DIR}/packages/zlib.1.2.11-1-linux-x64 )
+set( ZLIB_ROOT ${CMAKE_BINARY_DIR}/packages/zlib.1.2.11-1-${PLATFORM} )
 
 find_package( ZLIB REQUIRED )
 
