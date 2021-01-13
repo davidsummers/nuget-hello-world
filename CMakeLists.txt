@@ -5,7 +5,6 @@ project( HelloWorld )
 if ( MSVC )
 
   set( PLATFORM "windows-x64" )
-  set( TARGET_FRAMEWORK "win10" )
 
   add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
   add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
@@ -13,7 +12,6 @@ if ( MSVC )
 else( )
 
   set( PLATFORM "linux-x64" )
-  set( TARGET_FRAMEWORK "lin" )
 
 endif( )
 
