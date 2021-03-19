@@ -2,19 +2,6 @@ cmake_minimum_required( VERSION 3.15 )
 
 project( HelloWorld )
 
-if ( MSVC )
-
-  set( PLATFORM "windows-x64" )
-
-  add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
-  add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
-
-else( )
-
-  set( PLATFORM "linux-x64" )
-
-endif( )
-
 # Find Nuget
 find_program( NUGET nuget )
 if ( NOT NUGET )
@@ -34,7 +21,7 @@ else( )
   
 endif( )
 
-set( ZLIB_ROOT ${CMAKE_BINARY_DIR}/packages/zlib.1.2.11-3-${PLATFORM} )
+set( ZLIB_ROOT ${CMAKE_BINARY_DIR}/packages/zlib.1.2.11 )
 
 find_package( ZLIB REQUIRED )
 
