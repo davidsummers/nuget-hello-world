@@ -13,6 +13,8 @@ repository.
 
 To consume the NUGET package:
 
+First make sure you have your nuget source repository set up.
+
 cd consumer
 cmake -B build
 cmake --build build
