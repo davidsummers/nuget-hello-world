@@ -1,1 +1,20 @@
 Demonstrate how to use NUGET in CMAKE to pull a package library and compile with that version of the library package.
+
+To generate the NUGET package:
+
+cd producer/json/cpp
+cmake -B build
+cmake --build build --target package
+
+Then copy the generated build/jsoncpp.1.9.4.nupkg to your NUGET Source
+repository.
+
+To consume the NUGET package:
+
+cd consumer
+cmake -B build
+cmake --build build
+
+Test by running the generated program:
+
+./build/hello
