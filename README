@@ -1,4 +1,6 @@
-Demonstrate how to use NUGET in CMAKE to pull a package library and compile with that version of the library package.
+Demonstrate how to use NUGET in CMAKE to pull a library package and compile and link to it.
+
+This process works on both Linux and Windows.
 
 To generate the NUGET package:
 
