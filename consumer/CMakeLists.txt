@@ -21,18 +21,14 @@ else( )
   
 endif( )
 
-set( ZLIB_ROOT ${CMAKE_BINARY_DIR}/packages/zlib.1.2.11 )
+set( jsoncpp_DIR ${CMAKE_BINARY_DIR}/packages/jsoncpp.1.9.4/lib64/cmake/jsoncpp )
 
-find_package( ZLIB REQUIRED )
+find_package( jsoncpp REQUIRED )
 
 add_executable( hello
                 hello.cpp
               )
 
-target_include_directories( hello PUBLIC
-                            ${ZLIB_INCLUDE_DIRS}
-                          )
-
 target_link_libraries( hello PUBLIC
-                       ${ZLIB_LIBRARIES}
+                       jsoncpp_static
                      )

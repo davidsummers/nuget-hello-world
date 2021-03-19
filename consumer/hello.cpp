@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "zlib.h"
+#include "json/version.h"
+// #include "zlib.h"
 
 int main( )
 {
-  const char *version = zlibVersion( );
-  std::cout << "Hello, Zlib (" << version << ") World!" << std::endl;
+  std::cout << "Hello, JsonCpp (" << JSONCPP_VERSION_STRING << ") World!" << std::endl;
   return 0;
 }
