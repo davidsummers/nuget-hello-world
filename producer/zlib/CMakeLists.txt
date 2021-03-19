@@ -10,7 +10,11 @@ set( CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/install" )
 
 add_subdirectory( zlib-${ZLIB_VERSION} )
 
-include_directories( ${CMAKE_SOURCE_DIR}/zlib-${ZLIB_VERSION} )
+set( ZLIB_SOURCE_DIR "${CMAKE_SOURCE_DIR}/zlib-${ZLIB_VERSION}" )
+
+message( "*** ZLIB_SOURCE_DIR = ${ZLIB_SOURCE_DIR}" )
+
+include_directories( ZLIB_SOURCE_DIR )
 
 set( CPACK_GENERATOR NuGet )
 
