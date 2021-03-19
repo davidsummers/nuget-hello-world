@@ -4,7 +4,7 @@ This process works on both Linux and Windows.
 
 To generate the NUGET package:
 
-cd producer/json/cpp
+cd producer/jsoncpp
 cmake -B build
 cmake --build build --target package
 
