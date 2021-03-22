@@ -21,7 +21,15 @@ else( )
   
 endif( )
 
-set( jsoncpp_DIR ${CMAKE_BINARY_DIR}/packages/jsoncpp.1.9.4/lib64/cmake/jsoncpp )
+if ( MSVC )
+
+  set( jsoncpp_DIR ${CMAKE_BINARY_DIR}/packages/jsoncpp.1.9.4/lib/cmake/jsoncpp )
+
+else( )
+
+  set( jsoncpp_DIR ${CMAKE_BINARY_DIR}/packages/jsoncpp.1.9.4/lib64/cmake/jsoncpp )
+
+endif( )
 
 find_package( jsoncpp REQUIRED )
 
