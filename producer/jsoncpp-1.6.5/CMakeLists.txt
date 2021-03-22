@@ -6,7 +6,7 @@ cmake_minimum_required( VERSION 3.17 )
 
 set( JSONCPP_VERSION "1.6.5" )
 
-option( JSCONCPP_WITH_PKGCONFIG_SUPPORT "PKGCONFIG"     OFF )
+option( JSONCPP_WITH_PKGCONFIG_SUPPORT  "PKGCONFIG"     OFF )
 option( JSONCPP_WITH_CMAKE_PACKAGE      "CMake Package" ON  )
 option( JSONCPP_WITH_TESTS              "Tests"         OFF )
 option( BUILD_SHARED_LIBS               "Shared Libs"   ON  )
