@@ -9,7 +9,7 @@ project( HelloWorld )
 #     LINK_DIRECTORIES
 #   )
 
-set( JSONCPP_CONSUME_VERSION "1.9.4" )
+set( JSONCPP_CONSUME_VERSION "1.6.5" )
 
 if ( JSONCPP_CONSUME_VERSION MATCHES "1.9.4" )
 
