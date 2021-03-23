@@ -2,6 +2,9 @@ cmake_minimum_required( VERSION 3.15 )
 
 project( HelloWorld )
 
+set( JSONCPP_CONSUME_VERSION "1.9.4" )
+set( JSONCPP_LIB_DIR "lib64" )
+
 # Find Nuget
 find_program( NUGET nuget )
 if ( NOT NUGET )
@@ -21,15 +24,9 @@ else( )
   
 endif( )
 
-if ( MSVC )
+set( jsoncpp_DIR ${CMAKE_BINARY_DIR}/packages/jsoncpp.${JSONCPP_CONSUME_VERSION}/${JSONCPP_LIB_DIR}/cmake/jsoncpp )
 
-  set( jsoncpp_DIR ${CMAKE_BINARY_DIR}/packages/jsoncpp.1.9.4/lib/cmake/jsoncpp )
-
-else( )
-
-  set( jsoncpp_DIR ${CMAKE_BINARY_DIR}/packages/jsoncpp.1.9.4/lib64/cmake/jsoncpp )
-
-endif( )
+message( "jsoncpp_DIR = ${jsoncpp_DIR}" )
 
 find_package( jsoncpp REQUIRED )
 
