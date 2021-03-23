@@ -2,14 +2,25 @@ cmake_minimum_required( VERSION 3.15 )
 
 project( HelloWorld )
 
+# I tried this but haven't noticed any difference in output.
+# HOW TO USE?
+#set( CMAKE_DEBUG_TARGET_PROPERTIES
+#     INCLUDE_DIRECTORIES
+#     LINK_DIRECTORIES
+#   )
+
 set( JSONCPP_CONSUME_VERSION "1.9.4" )
 
 if ( JSONCPP_CONSUME_VERSION MATCHES "1.9.4" )
 
+  set( JSONCPP_TARGET_NAME "jsoncpp" )
+  set( JSONCPP_FIND_NAME "jsoncpp" )
   set( JSONCPP_LIB_DIR "lib64" )
 
 else( )
 
+  set( JSONCPP_TARGET_NAME "jsoncpp_lib" )
+  set( JSONCPP_FIND_NAME "jsoncpp" )
   set( JSONCPP_LIB_DIR "lib" )
 
 endif( )
@@ -37,7 +48,7 @@ set( jsoncpp_DIR ${CMAKE_BINARY_DIR}/packages/jsoncpp.${JSONCPP_CONSUME_VERSION}
 
 message( "jsoncpp_DIR = ${jsoncpp_DIR}" )
 
-find_package( jsoncpp REQUIRED )
+find_package( ${JSONCPP_FIND_NAME} REQUIRED )
 
 message( "jsoncpp_INCLUDE_DIRS = ${jsoncpp_INCLUDE_DIRS}" )
 message( "jsoncpp_LIBRARIES = ${jsoncpp_LIBRARIES}" )
@@ -47,5 +58,5 @@ add_executable( hello
               )
 
 target_link_libraries( hello PUBLIC
-                       jsoncpp_static
+                       ${JSONCPP_TARGET_NAME}_static
                      )
