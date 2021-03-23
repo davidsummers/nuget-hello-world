@@ -57,11 +57,11 @@ IF(BUILD_SHARED_LIBS)
     # This target and the similar one a few lines down cause errors building the
     # Linux installer for crfw.
 
-    # IF(NOT CMAKE_VERSION VERSION_LESS 2.8.11)
-    #     TARGET_INCLUDE_DIRECTORIES( jsoncpp_lib PUBLIC
-    #                                $<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>
-    #                                $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/${JSONCPP_INCLUDE_DIR}>)
-    # ENDIF(NOT CMAKE_VERSION VERSION_LESS 2.8.11)
+    IF(NOT CMAKE_VERSION VERSION_LESS 2.8.11)
+         TARGET_INCLUDE_DIRECTORIES( jsoncpp_lib PUBLIC
+                                     $<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>
+                                     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/${JSONCPP_INCLUDE_DIR}>)
+    ENDIF(NOT CMAKE_VERSION VERSION_LESS 2.8.11)
 
 ENDIF()
 
@@ -72,15 +72,18 @@ IF(BUILD_STATIC_LIBS)
                            DEBUG_OUTPUT_NAME jsoncpp${DEBUG_LIBNAME_SUFFIX} )
 
     INSTALL( TARGETS jsoncpp_lib_static ${INSTALL_EXPORT}
-         RUNTIME DESTINATION ${RUNTIME_INSTALL_DIR}
-         LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR}
-             ARCHIVE DESTINATION ${ARCHIVE_INSTALL_DIR})
+             RUNTIME DESTINATION ${RUNTIME_INSTALL_DIR}
+             LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR}
+             ARCHIVE DESTINATION ${ARCHIVE_INSTALL_DIR}
+             PUBLIC_HEADER DESTINATION ${INCLUDE_INSTALL_DIR}/json
+           )
 
-    # IF(NOT CMAKE_VERSION VERSION_LESS 2.8.11)
-    #     TARGET_INCLUDE_DIRECTORIES( jsoncpp_lib_static PUBLIC
-    #                             $<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>
-    #                             $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/${JSONCPP_INCLUDE_DIR}>
-    #                             )
-    # ENDIF(NOT CMAKE_VERSION VERSION_LESS 2.8.11)
+
+    IF(NOT CMAKE_VERSION VERSION_LESS 2.8.11)
+         TARGET_INCLUDE_DIRECTORIES( jsoncpp_lib_static PUBLIC
+                                 $<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>
+                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/${JSONCPP_INCLUDE_DIR}>
+                                 )
+    ENDIF(NOT CMAKE_VERSION VERSION_LESS 2.8.11)
 
 ENDIF()
